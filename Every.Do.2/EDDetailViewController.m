@@ -6,13 +6,13 @@
 //  Copyright © 2015 asu. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "EDDetailViewController.h"
 
-@interface DetailViewController ()
+@interface EDDetailViewController ()
 
 @end
 
-@implementation DetailViewController
+@implementation EDDetailViewController
 
 #pragma mark - Managing the detail item
 

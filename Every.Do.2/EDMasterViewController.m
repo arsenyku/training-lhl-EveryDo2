@@ -6,15 +6,15 @@
 //  Copyright © 2015 asu. All rights reserved.
 //
 
-#import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "EDMasterViewController.h"
+#import "EDDetailViewController.h"
 
-@interface MasterViewController ()
+@interface EDMasterViewController ()
 
 @property NSMutableArray *objects;
 @end
 
-@implementation MasterViewController
+@implementation EDMasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,7 +51,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = self.objects[indexPath.row];
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        EDDetailViewController *controller = (EDDetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;

@@ -11,7 +11,7 @@
 #import "EDDetailViewController.h"
 #import "EDDataStack.h"
 #import "EDToDoTask.h"
-#import  "NSDate+FormattedDate.h"
+#import "NSDate+FormattedDate.h"
 
 @interface EDMasterViewController () <NSFetchedResultsControllerDelegate>
 
@@ -55,9 +55,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        EDToDoTask *object = self.objects[indexPath.row];
+
+        EDToDoTask *detailItem = self.fetchedResultsController.sections[ indexPath.section ].objects[ indexPath.row ];
         EDDetailViewController *controller = (EDDetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
+        [controller setDetailItem:detailItem dataStack:self.stack];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -79,7 +80,7 @@
     EDToDoTask *toDoTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = toDoTask.title;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Complete by: %@",
-                                 [toDoTask.completeBy dateStringWithFormat:@"dd-MMM-YYYY h:mm:ss a"] ];
+                                 [toDoTask.completeBy dateStringWithFormat:@"dd-MMM, h:mm:ss a"] ];
     return cell;
 }
 
@@ -238,7 +239,7 @@
     
     toDoTask.title = text;
     toDoTask.taskDescription = @"Nom nom nom nom nom";
-    toDoTask.priority = @100;
+    toDoTask.priority = [NSNumber numberWithInt:( NUMBER_OF_PRIORITIES / 2 )];
     toDoTask.completeBy = [NSDate dateWithTimeInterval:SECONDS_PER_DAY * 2 sinceDate:[NSDate date]];
     toDoTask.createdOn = [NSDate date];
     toDoTask.completed = NO;

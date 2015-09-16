@@ -21,6 +21,7 @@
 		126030CB1BAA120200739CC5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030C61BAA120200739CC5 /* NSDate+FormattedDate.m */; settings = {ASSET_TAGS = (); }; };
 		126030CC1BAA120200739CC5 /* EDToDoTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030C91BAA120200739CC5 /* EDToDoTask.m */; settings = {ASSET_TAGS = (); }; };
 		126030CD1BAA120200739CC5 /* EDToDoTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030CA1BAA120200739CC5 /* EDToDoTask+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		126030D31BAA347500739CC5 /* NSNumber+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030D21BAA347500739CC5 /* NSNumber+Operations.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		126030C81BAA120200739CC5 /* EDToDoTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDToDoTask.h; sourceTree = "<group>"; };
 		126030C91BAA120200739CC5 /* EDToDoTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDToDoTask.m; sourceTree = "<group>"; };
 		126030CA1BAA120200739CC5 /* EDToDoTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDToDoTask+CoreDataProperties.m"; sourceTree = "<group>"; };
+		126030D11BAA347500739CC5 /* NSNumber+Operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Operations.h"; sourceTree = "<group>"; };
+		126030D21BAA347500739CC5 /* NSNumber+Operations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Operations.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				126030651BA9F8E000739CC5 /* EDDataStack.m */,
 				126030C51BAA120200739CC5 /* NSDate+FormattedDate.h */,
 				126030C61BAA120200739CC5 /* NSDate+FormattedDate.m */,
+				126030D11BAA347500739CC5 /* NSNumber+Operations.h */,
+				126030D21BAA347500739CC5 /* NSNumber+Operations.m */,
 				126030601BA9F83B00739CC5 /* Model */,
 				1260302A1BA9F16800739CC5 /* Main.storyboard */,
 				1260302D1BA9F16800739CC5 /* Assets.xcassets */,
@@ -313,6 +318,7 @@
 				126030CD1BAA120200739CC5 /* EDToDoTask+CoreDataProperties.m in Sources */,
 				126030661BA9F8E000739CC5 /* EDDataStack.m in Sources */,
 				126030261BA9F16800739CC5 /* EDMasterViewController.m in Sources */,
+				126030D31BAA347500739CC5 /* NSNumber+Operations.m in Sources */,
 				126030591BA9F3F000739CC5 /* Model.xcdatamodeld in Sources */,
 				126030201BA9F16800739CC5 /* main.m in Sources */,
 				126030CB1BAA120200739CC5 /* NSDate+FormattedDate.m in Sources */,

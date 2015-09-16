@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EDDataStack.h"
+#import "EDToDoTask.h"
 
 @interface EDDetailViewController : UITableViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) EDToDoTask *detailItem;
+
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+- (void)setDetailItem:(EDToDoTask*)detailItem dataStack:(EDDataStack*)dataStack ;
 
 @end
 

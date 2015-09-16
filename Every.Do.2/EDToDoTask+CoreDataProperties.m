@@ -1,5 +1,5 @@
 //
-//  ToDoTask+CoreDataProperties.m
+//  EDToDoTask+CoreDataProperties.m
 //  Every.Do.2
 //
 //  Created by asu on 2015-09-16.
@@ -9,9 +9,9 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "ToDoTask+CoreDataProperties.h"
+#import "EDToDoTask+CoreDataProperties.h"
 
-@implementation ToDoTask (CoreDataProperties)
+@implementation EDToDoTask (CoreDataProperties)
 
 @dynamic title;
 @dynamic taskDescription;

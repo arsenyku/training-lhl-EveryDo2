@@ -1,5 +1,5 @@
 //
-//  ToDoTask.h
+//  EDToDoTask.h
 //  Every.Do.2
 //
 //  Created by asu on 2015-09-16.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ToDoTask : NSManagedObject
+@interface EDToDoTask : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -19,4 +19,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "ToDoTask+CoreDataProperties.h"
+#import "EDToDoTask+CoreDataProperties.h"

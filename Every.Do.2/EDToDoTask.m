@@ -1,14 +1,14 @@
 //
-//  ToDoTask.m
+//  EDToDoTask.m
 //  Every.Do.2
 //
 //  Created by asu on 2015-09-16.
 //  Copyright © 2015 asu. All rights reserved.
 //
 
-#import "ToDoTask.h"
+#import "EDToDoTask.h"
 
-@implementation ToDoTask
+@implementation EDToDoTask
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -1,5 +1,5 @@
 //
-//  ToDoTask+CoreDataProperties.h
+//  EDToDoTask+CoreDataProperties.h
 //  Every.Do.2
 //
 //  Created by asu on 2015-09-16.
@@ -9,16 +9,16 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "ToDoTask.h"
+#import "EDToDoTask.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ToDoTask (CoreDataProperties)
+@interface EDToDoTask (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *taskDescription;
 @property (nullable, nonatomic, retain) NSNumber *priority;
-@property (nullable, nonatomic, retain) NSNumber *completed;
+@property (nonatomic, assign) BOOL completed;
 @property (nullable, nonatomic, retain) NSDate *completeBy;
 @property (nullable, nonatomic, retain) NSDate *createdOn;
 

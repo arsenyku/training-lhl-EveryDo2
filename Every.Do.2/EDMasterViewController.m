@@ -8,10 +8,12 @@
 
 #import "EDMasterViewController.h"
 #import "EDDetailViewController.h"
+#import "EDDataStack.h"
 
 @interface EDMasterViewController ()
 
 @property NSMutableArray *objects;
+@property (nonatomic) EDDataStack *stack;
 @end
 
 @implementation EDMasterViewController
@@ -23,7 +25,21 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.detailViewController = (EDDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.stack = [[EDDataStack alloc] init];
+   
+    
+    
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"ToDoTask"];
+    
+    //    fetch.fetchLimit = 10;
+    
+    NSError *fetchError = nil;
+    NSArray *allTasks = [self.stack.context executeFetchRequest:fetch error:&fetchError];
+    
+    
+    self.objects = [allTasks copy];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

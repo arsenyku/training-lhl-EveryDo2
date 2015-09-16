@@ -11,7 +11,7 @@
 #import "EDDetailViewController.h"
 #import "EDDataStack.h"
 #import "EDToDoTask.h"
-#import  "NSDate+format.h"
+#import  "NSDate+FormattedDate.h"
 
 @interface EDMasterViewController () <NSFetchedResultsControllerDelegate>
 
@@ -30,7 +30,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                target:self
-                                                                               action:@selector(insertNewObject:)];
+                                                                               action:@selector(promptForTitle)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (EDDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -49,16 +49,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender {
-    [self promptForTitle];
-}
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        EDToDoTask *object = self.objects[indexPath.row];
         EDDetailViewController *controller = (EDDetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
@@ -114,7 +111,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ToDoTask" inManagedObjectContext:self.stack.context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:MASTER_VIEW_ENTITY_NAME inManagedObjectContext:self.stack.context];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
@@ -169,8 +166,10 @@
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
     UITableView *tableView = self.tableView;
@@ -213,27 +212,10 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
                                                  style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction *action) {
-                                                   EDToDoTask *toDoTask = [NSEntityDescription
-                                                                           insertNewObjectForEntityForName:MASTER_VIEW_ENTITY_NAME
-                                                                           inManagedObjectContext:self.stack.context];
-
                                                    NSString* text = ((UITextField*)alertController.textFields.firstObject).text;
-                                                   
-                                                   toDoTask.title = text;
-                                                   toDoTask.taskDescription = @"Nom nom nom nom nom";
-                                                   toDoTask.priority = @100;
-                                                   toDoTask.completeBy = [NSDate dateWithTimeInterval:SECONDS_PER_DAY * 2 sinceDate:[NSDate date]];
-                                                   toDoTask.createdOn = [NSDate date];
-                                                   toDoTask.completed = NO;
-                                                   
-                                                   NSError *saveError = nil;
-                                                   
-                                                   if (![self.stack.context save:&saveError]) {
-                                                       NSLog(@"Save failed! %@", saveError);
-                                                   }
-                                                   
-
+                                                   [self insertNewObjectWithTitle:text];
                                                }];
+    
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel"
                                                      style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction *action) {
@@ -245,6 +227,28 @@
     [alertController addTextFieldWithConfigurationHandler:nil];
     
     [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+- (void)insertNewObjectWithTitle:(NSString*)text {
+    
+    EDToDoTask *toDoTask = [NSEntityDescription
+                            insertNewObjectForEntityForName:MASTER_VIEW_ENTITY_NAME
+                            inManagedObjectContext:self.stack.context];
+    
+    toDoTask.title = text;
+    toDoTask.taskDescription = @"Nom nom nom nom nom";
+    toDoTask.priority = @100;
+    toDoTask.completeBy = [NSDate dateWithTimeInterval:SECONDS_PER_DAY * 2 sinceDate:[NSDate date]];
+    toDoTask.createdOn = [NSDate date];
+    toDoTask.completed = NO;
+    
+    NSError *saveError = nil;
+    
+    if (![self.stack.context save:&saveError]) {
+        NSLog(@"Save failed! %@", saveError);
+    }
+    
     
 }
 

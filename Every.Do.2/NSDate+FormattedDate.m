@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 asu. All rights reserved.
 //
 
-#import "NSDate+format.h"
+#import "NSDate+FormattedDate.h"
 
 @implementation NSDate (PrettyDate)
 -(NSString*)dateStringWithFormat:(NSString*)format{

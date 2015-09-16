@@ -18,7 +18,7 @@
 		126030471BA9F16800739CC5 /* Every_Do_2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030461BA9F16800739CC5 /* Every_Do_2UITests.m */; };
 		126030591BA9F3F000739CC5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 126030571BA9F3F000739CC5 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		126030661BA9F8E000739CC5 /* EDDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030651BA9F8E000739CC5 /* EDDataStack.m */; settings = {ASSET_TAGS = (); }; };
-		126030CB1BAA120200739CC5 /* NSDate+format.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030C61BAA120200739CC5 /* NSDate+format.m */; settings = {ASSET_TAGS = (); }; };
+		126030CB1BAA120200739CC5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030C61BAA120200739CC5 /* NSDate+FormattedDate.m */; settings = {ASSET_TAGS = (); }; };
 		126030CC1BAA120200739CC5 /* EDToDoTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030C91BAA120200739CC5 /* EDToDoTask.m */; settings = {ASSET_TAGS = (); }; };
 		126030CD1BAA120200739CC5 /* EDToDoTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 126030CA1BAA120200739CC5 /* EDToDoTask+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -63,8 +63,8 @@
 		126030641BA9F8E000739CC5 /* EDDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDDataStack.h; sourceTree = "<group>"; };
 		126030651BA9F8E000739CC5 /* EDDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDDataStack.m; sourceTree = "<group>"; };
 		126030AC1BAA056200739CC5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		126030C51BAA120200739CC5 /* NSDate+format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+format.h"; sourceTree = "<group>"; };
-		126030C61BAA120200739CC5 /* NSDate+format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+format.m"; sourceTree = "<group>"; };
+		126030C51BAA120200739CC5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
+		126030C61BAA120200739CC5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
 		126030C71BAA120200739CC5 /* EDToDoTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDToDoTask+CoreDataProperties.h"; sourceTree = "<group>"; };
 		126030C81BAA120200739CC5 /* EDToDoTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDToDoTask.h; sourceTree = "<group>"; };
 		126030C91BAA120200739CC5 /* EDToDoTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDToDoTask.m; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 				126030281BA9F16800739CC5 /* EDDetailViewController.m */,
 				126030641BA9F8E000739CC5 /* EDDataStack.h */,
 				126030651BA9F8E000739CC5 /* EDDataStack.m */,
-				126030C51BAA120200739CC5 /* NSDate+format.h */,
-				126030C61BAA120200739CC5 /* NSDate+format.m */,
+				126030C51BAA120200739CC5 /* NSDate+FormattedDate.h */,
+				126030C61BAA120200739CC5 /* NSDate+FormattedDate.m */,
 				126030601BA9F83B00739CC5 /* Model */,
 				1260302A1BA9F16800739CC5 /* Main.storyboard */,
 				1260302D1BA9F16800739CC5 /* Assets.xcassets */,
@@ -315,7 +315,7 @@
 				126030261BA9F16800739CC5 /* EDMasterViewController.m in Sources */,
 				126030591BA9F3F000739CC5 /* Model.xcdatamodeld in Sources */,
 				126030201BA9F16800739CC5 /* main.m in Sources */,
-				126030CB1BAA120200739CC5 /* NSDate+format.m in Sources */,
+				126030CB1BAA120200739CC5 /* NSDate+FormattedDate.m in Sources */,
 				126030291BA9F16800739CC5 /* EDDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

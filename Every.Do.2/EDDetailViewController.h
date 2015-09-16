@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EDDetailViewController : UIViewController
+@interface EDDetailViewController : UITableViewController
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;

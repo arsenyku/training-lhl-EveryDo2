@@ -63,7 +63,7 @@
 		126030581BA9F3F000739CC5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		126030641BA9F8E000739CC5 /* EDDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDDataStack.h; sourceTree = "<group>"; };
 		126030651BA9F8E000739CC5 /* EDDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDDataStack.m; sourceTree = "<group>"; };
-		126030AC1BAA056200739CC5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		126030AC1BAA056200739CC5 /* EDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDConstants.h; sourceTree = "<group>"; };
 		126030C51BAA120200739CC5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
 		126030C61BAA120200739CC5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
 		126030C71BAA120200739CC5 /* EDToDoTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDToDoTask+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		1260301D1BA9F16800739CC5 /* Every.Do.2 */ = {
 			isa = PBXGroup;
 			children = (
-				126030AC1BAA056200739CC5 /* Constants.h */,
+				126030AC1BAA056200739CC5 /* EDConstants.h */,
 				126030211BA9F16800739CC5 /* EDAppDelegate.h */,
 				126030221BA9F16800739CC5 /* EDAppDelegate.m */,
 				126030241BA9F16800739CC5 /* EDMasterViewController.h */,

@@ -6,7 +6,7 @@
 //  Copyright © 2015 asu. All rights reserved.
 //
 
-#import "Constants.h"
+#import "EDConstants.h"
 #import "EDDetailViewController.h"
 #import "NSNumber+Operations.h"
 
@@ -37,6 +37,12 @@ static int const PickerWrapCount = 5;
     
     self.detailItem = detailItem;
     self.stack = dataStack;
+    
+    if (detailItem){
+        self.clearTaskDescriptionPlaceholder = NO;
+    } else {
+        self.clearTaskDescriptionPlaceholder = YES;
+    }
     
     // Update the view.
     [self configureView];
@@ -82,6 +88,12 @@ static int const PickerWrapCount = 5;
 
         }
 
+    } else {
+        self.taskTitle.text = @"Short description of task";
+        self.taskDescriptionTextView.text = @"Detailed description of task";
+        [self.priorityPicker selectRow:(PickerWrapCount * NUMBER_OF_PRIORITIES)/2 inComponent:0 animated:NO];
+        [self.completeByPicker setDate:[[NSDate date] dateByAddingTimeInterval:2 * SECONDS_PER_DAY]];
+
     }
 }
 
@@ -111,7 +123,6 @@ static int const PickerWrapCount = 5;
     self.priorityPicker.layer.borderWidth = 0.5f;
     self.priorityPicker.layer.borderColor = [[UIColor blackColor] CGColor];
     
-    [self.priorityPicker selectRow:(PickerWrapCount * NUMBER_OF_PRIORITIES)/2 inComponent:0 animated:NO];
 
     [self configureView];
 }
@@ -141,7 +152,7 @@ static int const PickerWrapCount = 5;
 
 -(void)backToPreviousView{
     self.isEditing = NO;
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.parentViewController.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)cancelChanges{
@@ -179,38 +190,5 @@ static int const PickerWrapCount = 5;
 @end
 
 
-//@implementation EDNewToDoViewController
-//
-//static int const NUMBER_OF_PRIORITIES = 10;
-//
-//#pragma mark - lifecycle
-//
 
-//
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-//
-//#pragma mark - control events
-//
-//- (IBAction)cancelAction:(id)sender {
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-//
-//- (IBAction)saveNew:(id)sender {
-//    EDTodo *newItem = [EDTodo new];
-//    
-//    newItem.title = self.taskTitle.text;
-//    newItem.taskDescription = self.taskDescriptionTextView.text;
-//    newItem.completeBy = self.completeByPicker.date;
-//    newItem.priorityNumber = ([self.priorityPicker selectedRowInComponent:0] % NUMBER_OF_PRIORITIES) + 1;
-//    
-//    if (self.delegate)
-//        [self.delegate receiveToDoItem:newItem];
-//    
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-//
-//@end
 

@@ -81,6 +81,9 @@
                     <navigationItem key="navigationItem" title="To Do" id="Zdf-7t-Un8">
                         <barButtonItem key="backBarButtonItem" title="Back" id="b3R-g5-bOr"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="vC3-pB-5Vb" kind="show" identifier="newItem" id="q8h-R8-4C0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,8 +122,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-9V-Cxg">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-9V-Cxg">
+                                                    <rect key="frame" x="8" y="9" width="584" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -139,8 +142,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="interactive" text="Detailed description" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-1r-sz8">
-                                                    <rect key="frame" x="8" y="8" width="300" height="37"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Detailed description" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-1r-sz8">
+                                                    <rect key="frame" x="8" y="8" width="584" height="152"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -170,8 +173,8 @@
                                                         <rect key="frame" x="149" y="10" width="103" height="21"/>
                                                     </variation>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Epw-Kh-QuH">
-                                                    <rect key="frame" x="118" y="0.0" width="320" height="216"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Epw-Kh-QuH">
+                                                    <rect key="frame" x="118" y="-23" width="320" height="217"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="463440427.054313">
                                                         <!--2015-09-08 21:27:07 +0000-->
                                                     </date>
@@ -222,14 +225,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8wE-Qa-UYZ">
-                                                    <rect key="frame" x="200" y="-59" width="200" height="162"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wE-Qa-UYZ">
+                                                    <rect key="frame" x="200" y="-40" width="200" height="216"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="J7U-PL-hec"/>
                                                     </constraints>
                                                 </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Priority:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pg4-gg-TKz">
-                                                    <rect key="frame" x="8" y="12" width="59" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pg4-gg-TKz">
+                                                    <rect key="frame" x="8" y="58" width="60" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -272,6 +275,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
+        <segue reference="q8h-R8-4C0"/>
     </inferredMetricsTieBreakers>
 </document>

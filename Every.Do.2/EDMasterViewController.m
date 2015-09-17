@@ -6,7 +6,7 @@
 //  Copyright © 2015 asu. All rights reserved.
 //
 
-#import "Constants.h"
+#import "EDConstants.h"
 #import "EDMasterViewController.h"
 #import "EDDetailViewController.h"
 #import "EDDataStack.h"
@@ -30,7 +30,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                target:self
-                                                                               action:@selector(promptForTitle)];
+                                                                               action:@selector(newItemView)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (EDDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -55,11 +55,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-
+        
         EDToDoTask *detailItem = self.fetchedResultsController.sections[ indexPath.section ].objects[ indexPath.row ];
         EDDetailViewController *controller = (EDDetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:detailItem dataStack:self.stack];
-
+        
+    } else if ([[segue identifier] isEqualToString:@"newItem"]) {
+        EDDetailViewController *controller = (EDDetailViewController *)[[segue destinationViewController] topViewController];
+        [controller setDetailItem:nil dataStack:self.stack];
+        
     }
 }
 
@@ -75,11 +79,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    EDToDoTask *toDoTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = toDoTask.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Complete by: %@",
-                                 [toDoTask.completeBy dateStringWithFormat:@"dd-MMM, h:mm:ss a"] ];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -90,16 +90,16 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        EDToDoTask *deleteTarget = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.stack.context deleteObject:deleteTarget];
     }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:MASTER_VIEW_SORT_KEY] description];
+    EDToDoTask *toDoTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = toDoTask.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Complete by: %@",
+                                 [toDoTask.completeBy dateStringWithFormat:@"dd-MMM, h:mm:ss a"] ];
 }
 
 #pragma mark - Fetched Results Controller
@@ -201,6 +201,10 @@
 
 
 #pragma mark - private
+
+-(void)newItemView{
+    [self performSegueWithIdentifier:@"showDetail" sender:nil];
+}
 
 -(void)promptForTitle{
     

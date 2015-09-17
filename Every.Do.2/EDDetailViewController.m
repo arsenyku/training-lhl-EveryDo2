@@ -17,14 +17,19 @@
 @property (weak, nonatomic) IBOutlet UITextField *taskTitle;
 @property (weak, nonatomic) IBOutlet UIPickerView *priorityPicker;
 
-@property (assign, nonatomic) BOOL clearTaskDescriptionPlaceholder;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
+
+@property (assign, nonatomic) BOOL clearTaskDescriptionPlaceholder;
+@property (assign, nonatomic) BOOL isEditing;
 @property (strong, nonatomic) EDDataStack *stack;
 
 @end
 
 
 @implementation EDDetailViewController
+
+static int const PickerWrapCount = 5;
 
 #pragma mark - Managing the detail item
 
@@ -47,19 +52,45 @@
         [self.completeByPicker setDate:self.detailItem.completeBy];
         
         
-        self.taskTitle.userInteractionEnabled = NO;
-        self.taskDescriptionTextView.userInteractionEnabled = NO;
-        self.priorityPicker.userInteractionEnabled = NO;
-        self.completeByPicker.userInteractionEnabled = NO;
+        self.taskTitle.userInteractionEnabled = self.isEditing;
+        self.taskDescriptionTextView.userInteractionEnabled = self.isEditing;
+        self.priorityPicker.userInteractionEnabled = self.isEditing;
+        self.completeByPicker.userInteractionEnabled = self.isEditing;
+
+        if (self.isEditing){
+            self.navigationItem.rightBarButtonItem =
+            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                          target:self
+                                                          action:@selector(saveToDo)];
+            
+            self.navigationItem.leftBarButtonItem =
+            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                          target:self
+                                                          action:@selector(cancelChanges)];
+            
+        } else {
+            self.navigationItem.rightBarButtonItem =
+            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                          target:self
+                                                          action:@selector(editToDo)];
+            
+            self.navigationItem.leftBarButtonItem =
+            [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                             style:UIBarButtonItemStylePlain
+                                            target:self
+                                            action:@selector(backToPreviousView)];
+
+        }
+
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     self.taskDescriptionTextView.delegate = self;
     self.clearTaskDescriptionPlaceholder = YES;
+    self.isEditing = NO;
     
     // Adjust the size of the UIDatePicker by scaling.
     CGAffineTransform shrink = CGAffineTransformMakeScale(0.60, 0.60);
@@ -80,13 +111,43 @@
     self.priorityPicker.layer.borderWidth = 0.5f;
     self.priorityPicker.layer.borderColor = [[UIColor blackColor] CGColor];
     
-    [self.priorityPicker selectRow:(5*3)-1 inComponent:0 animated:NO];
+    [self.priorityPicker selectRow:(PickerWrapCount * NUMBER_OF_PRIORITIES)/2 inComponent:0 animated:NO];
+
+    [self configureView];
+}
+
+#pragma mark - Button events
+
+-(void)editToDo{
+    self.isEditing = YES;
+    [self configureView];
+}
+
+-(void)saveToDo{
+    self.isEditing = NO;
+
     
-    
+    self.detailItem.title = self.taskTitle.text;
+    self.detailItem.taskDescription = self.taskDescriptionTextView.text;
+    self.detailItem.completeBy = [self.completeByPicker date];
+    self.detailItem.priority = [ NSNumber numberWithLong:[self.priorityPicker selectedRowInComponent:0]+1 ];
+
+    NSError *error = nil;
+    if ( ! [self.stack.context save:&error] )
+        NSLog(@"Error while saving edits: %@", error);
     
     [self configureView];
 }
 
+-(void)backToPreviousView{
+    self.isEditing = NO;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)cancelChanges{
+    self.isEditing = NO;
+    [self configureView];
+}
 
 
 #pragma mark - <UIPickerViewDataSource>
@@ -96,7 +157,7 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return 5 * NUMBER_OF_PRIORITIES;
+    return PickerWrapCount * NUMBER_OF_PRIORITIES;
 }
 
 #pragma mark - <UIPickerViewDelegate>

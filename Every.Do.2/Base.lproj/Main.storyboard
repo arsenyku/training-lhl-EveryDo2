@@ -78,7 +78,9 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="To Do" id="Zdf-7t-Un8">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="b3R-g5-bOr"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -253,17 +255,9 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="EHa-Kc-9R7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qz1-J4-ojF">
-                            <connections>
-                                <action selector="cancelAction:" destination="qQ2-iy-wwn" id="UXw-kZ-JEK"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="D3V-iS-Jtv">
-                            <connections>
-                                <action selector="saveNew:" destination="qQ2-iy-wwn" id="WaI-If-b82"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="To Do" id="EHa-Kc-9R7">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="qz1-J4-ojF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="D3V-iS-Jtv"/>
                     </navigationItem>
                     <connections>
                         <outlet property="completeByPicker" destination="Epw-Kh-QuH" id="6ag-vM-z81"/>

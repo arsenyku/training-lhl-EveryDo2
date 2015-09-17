@@ -59,8 +59,7 @@
         EDToDoTask *detailItem = self.fetchedResultsController.sections[ indexPath.section ].objects[ indexPath.row ];
         EDDetailViewController *controller = (EDDetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:detailItem dataStack:self.stack];
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
+
     }
 }
 
